@@ -14,35 +14,42 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mseventdriven-demo</name>
 	<description>Demo project for Spring Boot event driven ms</description>
+	<!-- For parent module project the packaging is pom -->
 	<packaging>pom</packaging>
 	<properties>
+		<!-- one stop point for maintaining all the dependencies version of sub 
+			modules -->
 		<java.version>1.8</java.version>
 		<spring-boot.version>2.7.3</spring-boot.version>
 		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
 	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-			<version>${spring-boot.version}</version>
-		</dependency>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<version>${spring-boot.version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<version>${spring-boot.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
+			<!-- BY default this plugin is available and useful for creating executables 
+				in package -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${spring-boot.version}</version>
 			</plugin>
-<!-- 			maven compiler plugin sets the java version during maven compilation default is 1.6 -->
+			<!-- maven compiler plugin sets the java version during maven compilation 
+				default is 1.6 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
